@@ -3,7 +3,7 @@ import logging
 from telegram import __version__ as tg_ver
 from telegram.ext import Updater
 
-TOKEN = '5484155734:AAELvAPIUJ7SSItY00aVn8226KFQZZrQJsE'
+TOKEN = 'TOKEN'
 
 bot = telegram.Bot(token=TOKEN)
 updater = Updater(token=TOKEN, use_context=True)
