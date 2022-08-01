@@ -1,9 +1,38 @@
 import telegram
 import logging
+# from PIL import Image
 from telegram import __version__ as tg_ver
 from telegram.ext import Updater
 
-TOKEN = '5484155734:AAELvAPIUJ7SSItY00aVn8226KFQZZrQJsE'
+TOKEN = TOKEN
+picture = Image.open('ec9.jpg')
+PEPE = (f'⢠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠬⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠬⠬⠭⠥⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡄\n'
+f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⠶⢶⣤⠀⠀⣷⡆⠀⢀⣴⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇\n'
+f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠋⠀⠀⠀⠈⣷⠀⢸⣇⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷\n'
+f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠀⠀⠀⠀⠀⣿⠀⢸⡟⠙⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿\n'
+f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣄⣀⣠⡾⠃⠀⣼⡇⠀⠈⠻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿\n'
+f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿\n'
+f'⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿\n'
+f'⣿⠀⠀⣿⡛⣛⠛⢳⡤⠀⣠⡾⠛⠛⠻⣦⡀⠀⣰⠞⠛⠛⠳⣄⠀⠀⡿⡇⠀⠀⢀⣾⡇⠀⢸⠛⠛⠛⠛⠃⣤⣿⠛⠛⠛⠳⡄⠀⠀⡧\n'
+f'⣿⠀⠀⣿⣧⣯⣤⣾⠁⠀⡏⠀⠀⠀⠀⠘⣗⢸⡇⠀⠀⠀⠀⠘⡆⠀⡇⢹⡄⠀⣼⢹⡇⠀⢸⣦⣤⣤⣥⠄⠘⣿⣀⣀⣀⣴⠇⠀⠀⡗\n'
+f'⣿⠀⠀⣿⡀⠀⠀⠙⡏⠀⣧⡀⠀⠀⠀⣸⡏⠘⣧⠀⠀⠀⠀⣸⠇⠀⡇⠈⣷⣸⠇⢸⡇⠀⢸⠀⠀⠀⠀⠀⠀⣿⠉⠙⠻⣅⠀⠀⠀⣿\n'
+f'⣿⠀⠀⠻⠷⣶⠶⠚⠁⠀⠈⠛⠶⠶⠞⠋⠀⠀⠈⠓⠶⠶⠞⠁⠀⠀⠇⠀⠸⠟⠀⢸⡇⠀⠸⡶⠶⠶⠶⠦⠀⠿⠀⠀⠀⠘⠷⡄⠀⣿\n'
+f'⣿⢤⣦⣤⣴⣶⣶⣶⣶⣶⣶⣶⣦⣤⣴⣦⣤⣤⣤⣤⣤⣤⣴⣤⣤⣤⣤⣶⣶⣦⣶⣤⣦⡴⣤⣶⣶⠶⣶⣶⣦⣤⣤⣤⣤⣤⣦⣴⣤⡿\n'
+f'⠃⠀⠀⠀⠀⠀⣽⢿⡟⠀⣼⡟⣡⣾⡯⠿⠛⠛⠻⢯⣍⡁⢀⣩⠟⣫⡥⠿⠷⠿⠿⣌⡻⣟⣿⣭⡿⢷⣄⠈⠻⣮⣷⡀⠀⠀⠀⠀⠀⠀\n'
+f'⡇⠀⠀⠀⠀⢰⣿⣿⠀⢰⣏⣼⣻⡵⠟⠉⢀⣈⣉⣛⣶⣬⣿⠾⠋⢀⣀⣠⡤⣤⣤⣤⠿⣾⣿⣷⣙⠷⣝⢷⡀⠸⣞⣧⠀⠀⠀⠀⠀⠀\n'
+f'⡇⠀⠀⠀⠀⠈⡿⣿⠀⣿⣶⠟⠋⣠⠴⠚⠋⠁⠀⠀⢉⣻⡿⠀⠞⠋⢉⣴⠿⠋⣉⡤⢤⣶⡿⠿⠽⣷⡜⣧⣷⠀⣿⣼⠄⠀⠀⠀⠀⠀\n'
+f'⡃⠀⠀⠀⠀⠀⡇⣿⠀⣿⡇⠀⠀⠁⠀⠀⠀⣠⣴⣾⣿⣍⣉⣶⠶⠶⠯⣅⣠⠾⠋⣿⣟⣿⢿⣦⡀⠀⢹⡼⣿⠀⣿⣿⠀⠀⠀⠀⠀⠀\n'
+f'⠇⠀⠀⠀⠀⠀⡇⣿⡁⣿⡇⠀⠀⢀⣠⡴⢛⣽⠞⢡⣞⣹⡿⠻⣧⡄⠀⡾⠁⠀⠀⣿⣿⢿⣶⣿⣧⣤⣾⣷⡟⠀⢸⢸⠀⠀⠀⠀⠀⠀\n'
+f'⠁⠀⠀⠀⠀⠀⡇⣿⡁⣿⣇⠀⠀⠋⠉⢾⣏⠀⠀⢸⣿⣏⣿⣿⣿⣧⡴⠛⠦⠤⠴⠿⠛⠛⠋⣉⣽⣿⣿⢻⡇⠀⢸⢸⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⡇⣿⠀⢸⣿⠀⠀⢀⣠⣤⣬⣽⣶⣶⣿⣟⡛⠉⣉⣀⣀⣀⣀⣀⣀⣤⣴⣶⠾⠋⢁⣼⣿⣿⠀⠀⢸⣸⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⡇⣿⠀⠘⣿⡆⢸⣟⠁⠠⣤⣤⣌⣉⡉⠉⠉⠉⠉⠉⠉⠉⣉⣉⣭⣥⣤⣶⠶⠚⢻⡿⣷⡟⠀⠀⣾⢻⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⡇⣿⠀⠀⢿⣇⠀⠙⠻⠷⣶⣤⣄⣈⣉⡉⠉⠉⠉⠉⢉⣹⣉⣋⣁⣀⣤⣤⣴⠾⢿⡿⠋⠀⠀⣰⢯⠟⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⣇⣿⠀⠀⠘⣿⣧⣄⡀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠉⠉⠉⠀⠀⢀⣀⣠⣶⣿⣄⣀⡴⢞⡡⠋⠀⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⠹⣟⣧⡀⠀⠘⢿⣟⠿⢶⣤⣄⣀⣀⣀⣀⣀⣀⣀⣀⣤⣤⣤⣤⣴⡾⠿⠛⠉⠈⣿⣿⢻⡖⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⠀⢹⣿⣷⣄⠀⢀⣿⠀⠀⠈⠉⠛⠛⠛⠛⠛⠛⠹⠋⠁⠀⠉⠈⠀⠀⠀⠀⠀⠀⠈⢿⣧⣙⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀\n'
+f'⠀⠀⠀⠀⠀⠀⠀⡼⣿⡟⠻⣷⣾⣟⠀⠐⠀⠀⠀⣠⣤⣤⣤⣤⣤⣤⣄⣤⣠⡄⣀⣀⣤⣤⣄⠀⠀⠀⢻⣿⣜⡆⠀⠀⠀⠀⠀⠀⠀⠀\n')
+
+print(PEPE)
 
 bot = telegram.Bot(token=TOKEN)
 updater = Updater(token=TOKEN, use_context=True)
@@ -20,7 +49,8 @@ from telegram import Update
 from telegram.ext import CallbackContext
 
 def start(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, give me your money NOW!")
+    context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
+    context.bot.send_message(chat_id=update.effective_chat.id, text='Hello Im bot. GIVE ME YOUR MONEY MOW!')
 
 from telegram.ext import CommandHandler
 
@@ -28,13 +58,14 @@ start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
 
-# echo handler
+# echo handler !УБРАНО!
 from telegram.ext import MessageHandler, Filters
 
 def echo(update: Update, context: CallbackContext):
+    # context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
-echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
+echo_handler = MessageHandler(Filters.text & (~Filters.command) | Filters.photo & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
 
 
@@ -84,5 +115,5 @@ updater.start_polling()
 #stop polling
 # updater.stop()
 
-
-# print(bot.send_message(text='Привет, я робот, который хочет захватить мир!', chat_id='-705446959'))
+# bot.send_photo(chat_id='-705446959', photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
+# print(bot.send_message(text='Привет, я робот, который хочет захватить мир!', chat_id='chat_id'))
