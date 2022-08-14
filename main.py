@@ -48,7 +48,10 @@ def start(update: Update, context: CallbackContext):
             InlineKeyboardButton("Picture", callback_data='1'),
             InlineKeyboardButton("Text", callback_data='2'),
         ],
-        [InlineKeyboardButton("?", callback_data='3')],
+        [
+            InlineKeyboardButton("?", callback_data='3'),
+            InlineKeyboardButton("next", callback_data='4')
+        ],
     ]
 
     # button = [[KeyboardButton(text='Help')], [KeyboardButton(text='Pepe')]]
@@ -113,6 +116,13 @@ def button(update: Update, context: CallbackContext):
         button = [[KeyboardButton(text='Help')], [KeyboardButton(text='Pepe')]]
         context.bot.send_message(chat_id=update.effective_chat.id, text='WoW 😋', 
         reply_markup=ReplyKeyboardMarkup(button))
+    if query.data == '4':
+        keyboard = [
+            InlineKeyboardButton("New Picture", callback_data='1'),
+            InlineKeyboardButton("New Text", callback_data='2'),
+        ],
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        context.bot.send_message(chat_id=update.effective_chat.id, text='another page :)', reply_markup=reply_markup)
 
 
     query.edit_message_text(text=f"Selected option: {query.data}")

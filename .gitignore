@@ -1,1 +1,9 @@
+# python virtual environment
 env
+venv
+
+# vscode project folder
+.vscode
+
+# env file
+.env
