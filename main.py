@@ -1,10 +1,8 @@
 import telegram
 import logging
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext
-from telegram.ext import MessageHandler, Filters
-from telegram import InlineQueryResultArticle, InputTextMessageContent
+from telegram import *
+from telegram.ext import *
 
 TOKEN = '5484155734:AAELvAPIUJ7SSItY00aVn8226KFQZZrQJsE'
 
@@ -42,7 +40,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 
-# start handler
+#start handler
 def start(update: Update, context: CallbackContext):
     """Sends a message with three inline buttons attached."""
     keyboard = [
@@ -53,15 +51,17 @@ def start(update: Update, context: CallbackContext):
         [InlineKeyboardButton("?", callback_data='3')],
     ]
 
+    # button = [[KeyboardButton(text='Help')], [KeyboardButton(text='Pepe')]]
+
+    # context.bot.send_message(chat_id=update.effective_chat.id, text='Welcome to my bot!', 
+    # reply_markup=ReplyKeyboardMarkup(button))
+
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     update.message.reply_text('Please choose:', reply_markup=reply_markup)
 
-    # context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
-    # context.bot.send_message(chat_id=update.effective_chat.id, text='Hello Im bot. GIVE ME YOUR MONEY MOW!')
 
-
-# echo handler !УБРАНО!
+#echo handler
 def echo(update: Update, context: CallbackContext):
     # context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
@@ -91,12 +91,12 @@ def inline_caps(update: Update, context: CallbackContext):
 from telegram.ext import InlineQueryHandler
 
 
-# unkown commands
+#unkown commands
 def unknown(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
 
-# Buttons
+#Buttons
 def button(update: Update, context: CallbackContext):
     """Parses the CallbackQuery and updates the message text."""
     query = update.callback_query
@@ -109,15 +109,20 @@ def button(update: Update, context: CallbackContext):
         context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('/home/glebosh/workspace/tgbot/ec9.jpg', 'rb'))
     if query.data == '2':
         context.bot.send_message(chat_id=update.effective_chat.id, text='Hello Im bot. GIVE ME YOUR MONEY MOW!')
+    if query.data == '3':
+        button = [[KeyboardButton(text='Help')], [KeyboardButton(text='Pepe')]]
+        context.bot.send_message(chat_id=update.effective_chat.id, text='WoW 😋', 
+        reply_markup=ReplyKeyboardMarkup(button))
+
 
     query.edit_message_text(text=f"Selected option: {query.data}")
 
 
-# Help
+#Help
 def help(update: Update, context: CallbackContext):
     commands = {'start': 'Starts programm with choice', 'caps ...': 'Reply with CAPS text'}
 
-    context.bot.send_message(chat_id=update.effective_chat.id, text='/start: Starts programm with choice; /caps: Reply with CAPS text')
+    context.bot.send_message(chat_id=update.effective_chat.id, text='/start: Starts programm with choice;\n/caps: Reply with CAPS text')
 
 
 def main():
