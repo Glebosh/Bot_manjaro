@@ -1,10 +1,11 @@
 import telegram
 import logging
+from settings import settings
 
 from telegram import *
 from telegram.ext import *
 
-TOKEN = 'TOKEN'
+TOKEN = settings.secret_token
 
 PEPE = (f'⢠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠬⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠬⠬⠭⠥⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡄\n'
 f'⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⠶⢶⣤⠀⠀⣷⡆⠀⢀⣴⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇\n'
